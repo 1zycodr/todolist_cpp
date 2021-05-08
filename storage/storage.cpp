@@ -57,7 +57,7 @@ void Storage::remove_todo_item(int index) {
 
 void Storage::print_todos() {
     for (int i = 0; i < size; i++) {
-        cout << "[id: " << i << "] Name: " << todos[i]->get_title();
+        cout << "\n[id: " << i << "] Name: " << todos[i]->get_title();
         cout << " " << (todos[i]->get_status() ? "(done)" : "(undone)") << endl;
         cout << "\tDescription: " << todos[i]->get_description() << endl;
 
@@ -168,60 +168,60 @@ void Storage::load() {
 };
 
 
-int main() {
-    // Testing storage
-    Storage* first_storage = Storage::get_instance();
-    Storage* second_storage = Storage::get_instance();
+// int main() {
+//     // Testing storage
+//     Storage* first_storage = Storage::get_instance();
+//     Storage* second_storage = Storage::get_instance();
 
-    // here we can see that first_storage and second_storage variables
-    // point to the same object
-    cout << first_storage << endl << second_storage << endl;
+//     // here we can see that first_storage and second_storage variables
+//     // point to the same object
+//     cout << first_storage << endl << second_storage << endl;
 
-    first_storage->load();
+//     first_storage->load();
 
-    ToDo todo("title", "description1");
-    ToBuy tobuy("title", "description2", 2000);
-    ToRead toread("title", "description3", "link");
+//     ToDo todo("title", "description1");
+//     ToBuy tobuy("title", "description2", 2000);
+//     ToRead toread("title", "description3", "link");
 
-    second_storage->add_todo_item(&todo);
-    first_storage->add_todo_item(&tobuy);
-    second_storage->add_todo_item(&toread);
+//     second_storage->add_todo_item(&todo);
+//     first_storage->add_todo_item(&tobuy);
+//     second_storage->add_todo_item(&toread);
     
-    cout << first_storage->get_size() << " " << second_storage->get_size() << endl;
+//     cout << first_storage->get_size() << " " << second_storage->get_size() << endl;
     
-    first_storage->print_todos();
+//     first_storage->print_todos();
     
-    first_storage->remove_todo_item(2);
+//     first_storage->remove_todo_item(2);
 
-    cout << endl;
-    second_storage->print_todos();
+//     cout << endl;
+//     second_storage->print_todos();
 
-    first_storage->add_todo_item(&toread);
+//     first_storage->add_todo_item(&toread);
 
-    cout << endl;
-    second_storage->print_todos();
+//     cout << endl;
+//     second_storage->print_todos();
 
-    first_storage->done_todo_item(1);
-    second_storage->done_todo_item(0);
+//     first_storage->done_todo_item(1);
+//     second_storage->done_todo_item(0);
 
-    cout << endl;
-    second_storage->print_todos();
+//     cout << endl;
+//     second_storage->print_todos();
 
-    first_storage->undone_todo_item(1);
-    second_storage->undone_todo_item(0);
-    first_storage->remove_todo_item(5);
+//     first_storage->undone_todo_item(1);
+//     second_storage->undone_todo_item(0);
+//     first_storage->remove_todo_item(5);
 
-    cout << endl;
-    second_storage->print_todos();
+//     cout << endl;
+//     second_storage->print_todos();
 
-    // first_storage->remove_todo_item(0);
-    // first_storage->remove_todo_item(0);
-    // first_storage->remove_todo_item(0);
-    // first_storage->remove_todo_item(0);
+//     // first_storage->remove_todo_item(0);
+//     // first_storage->remove_todo_item(0);
+//     // first_storage->remove_todo_item(0);
+//     // first_storage->remove_todo_item(0);
 
-    // cout << endl;
-    // second_storage->print_todos();
-    first_storage->save();
+//     // cout << endl;
+//     // second_storage->print_todos();
+//     first_storage->save();
 
-    return 0;
-}
+//     return 0;
+// }
