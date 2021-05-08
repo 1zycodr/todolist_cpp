@@ -17,6 +17,7 @@ class BaseToDo {
         void set_title(std::string title);
         void set_description(std::string description);
 
+        BaseToDo& operator=(const BaseToDo& other);
         virtual ~BaseToDo() {};
 
     private:

@@ -39,6 +39,9 @@ void BaseToDo::set_description(std::string description) {
     this->description = description;
 };
 
+BaseToDo& BaseToDo::operator=(const BaseToDo&) {
+    return *this;
+}
 // int main() {
 //     // testing BaseToDo class
 //     BaseToDo t;
