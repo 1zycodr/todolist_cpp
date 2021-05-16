@@ -1,2 +1,4 @@
-todo do_something 0 here_I_am_going_to_do_something
-toread to_read 1 here_i_am_going_to_read_something here_is_the_link
+tobuy tobuy_item 0 tobuy_item_description 245
+todo new_todo 0 new_description
+toread to_read_title 0 tr_descr link.com
+tobuy title 0 d 200

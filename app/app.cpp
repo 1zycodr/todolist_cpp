@@ -10,7 +10,14 @@ App::App() {
 
 void App::init() {
     storage = Storage::get_instance();
-    storage->load();
+
+    try {
+        storage->load();
+    } catch (string err) {
+        cout << err << endl;
+        cout << "Creating data.txt file..." << endl;
+        storage->load();
+    }
 
     while(true) {
         start_menu();
@@ -106,7 +113,13 @@ void App::create_todo() {
         create_tobuy_item();
     }
 
-    storage->save();
+    try {
+        storage->save();
+    } catch (string err) {
+        cout << err << endl;
+        cout << "Creating data.txt file..." << endl;
+        storage->save();
+    }
 };
 
 
@@ -166,7 +179,14 @@ void App::delete_todo() {
     }
 
     storage->remove_todo_item(id);
-    storage->save();
+
+    try {
+        storage->save();
+    } catch (string err) {
+        cout << err << endl;
+        cout << "Creating data.txt file..." << endl;
+        storage->save();
+    }
 };
 
 
@@ -185,7 +205,13 @@ void App::done_todo() {
     }
     
     storage->done_todo_item(id);
-    storage->save();
+    try {
+        storage->save();
+    } catch (string err) {
+        cout << err << endl;
+        cout << "Creating data.txt file..." << endl;
+        storage->save();
+    }
 };
 
 
@@ -204,5 +230,12 @@ void App::undone_todo() {
     }
     
     storage->undone_todo_item(id);
-    storage->save();
+
+    try {
+        storage->save();
+    } catch (string err) {
+        cout << err << endl;
+        cout << "Creating data.txt file..." << endl;
+        storage->save();
+    }
 };

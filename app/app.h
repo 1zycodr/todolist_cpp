@@ -24,9 +24,7 @@ class App {
     private:
         string password = "password";
         Storage* storage;
-        // Windows OS:  cls
-        // *nix OS:     clear 
-        const char* CLEAR_COMMAND = "clear"; 
+        const char* CLEAR_COMMAND = "cls"; 
         const string HEADER = "----------------- TODO LIST -----------------";
 };
 

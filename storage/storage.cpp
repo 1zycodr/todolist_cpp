@@ -96,6 +96,11 @@ void Storage::undone_todo_item(int index) {
 void Storage::save() {
     ofstream datafile;
     datafile.open("data.txt");
+
+    if (datafile.fail()) {
+        throw "Error! data.txt file does not exists.";
+    }
+
     for (int i = 0; i < size; i++) {
         ToDo* todo = dynamic_cast<ToDo*>(todos[i]);
 
@@ -126,43 +131,35 @@ void Storage::save() {
 };
 
 void Storage::load() {
-    FILE* file;
+    cout << "Reading datafile..." << endl; 
+    
+    ifstream datafile;
+    string type, title, description, link;
+    bool status;
+    int price;
 
-    if ((file = fopen("data.txt", "r")) == NULL) {
-        cout << "Creating datafile..." << endl;
+    datafile.open("data.txt");
 
-        if(!(file = fopen("data.txt","a"))) {
-            exit(1);
-        }
+    if (datafile.fail()) {
+        throw "Error! data.txt file does not exist!";
+    }
 
-        fclose(file);
-        return;
-    } else {
-        cout << "Reading datafile..." << endl; 
-        
-        ifstream datafile;
-        string type, title, description, link;
-        bool status;
-        int price;
-
-        datafile.open("data.txt");
-        while(datafile >> type) {
-            if (type == "todo") {
-                datafile >> title >> status >> description;
-                ToDo* todo = new ToDo(title, description);
-                todo->set_status(status);
-                add_todo_item(todo);
-            } else if (type == "toread") {
-                datafile >> title >> status >> description >> link;
-                ToRead* toread = new ToRead(title, description, link);
-                toread->set_status(status);
-                add_todo_item(toread);
-            } else if (type == "tobuy") {
-                datafile >> title >> status >> description >> price;
-                ToBuy* tobuy = new ToBuy(title, description, price);
-                tobuy->set_status(status);
-                add_todo_item(tobuy);
-            }
+    while(datafile >> type) {
+        if (type == "todo") {
+            datafile >> title >> status >> description;
+            ToDo* todo = new ToDo(title, description);
+            todo->set_status(status);
+            add_todo_item(todo);
+        } else if (type == "toread") {
+            datafile >> title >> status >> description >> link;
+            ToRead* toread = new ToRead(title, description, link);
+            toread->set_status(status);
+            add_todo_item(toread);
+        } else if (type == "tobuy") {
+            datafile >> title >> status >> description >> price;
+            ToBuy* tobuy = new ToBuy(title, description, price);
+            tobuy->set_status(status);
+            add_todo_item(tobuy);
         }
     }
 };
